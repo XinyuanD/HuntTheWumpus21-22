@@ -1,2 +1,2 @@
-string s = "hello";
+String s = "hello";
 System.out.println(s);
