@@ -40,5 +40,6 @@ public class quicksort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+        int b = 0;
     }
 }
