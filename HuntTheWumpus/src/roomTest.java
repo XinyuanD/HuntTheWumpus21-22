@@ -138,9 +138,15 @@ class room {
     System.out.println("Top right: " + rightTop);
     System.out.println("Bottom Left: " + leftBot);
     System.out.println("Bottom Right: " + rightBot);
+    System.out.println("  " + above);
+    System.out.println(leftTop + "   " + rightTop);
+    System.out.println("  " + val);
+    System.out.println(leftBot + "   " + rightBot);
+    System.out.println("  " + bellow);
   }
 
   public static int roomCount(){
     return ((bBound/2)*(rBound+1)) + 1 + rBound;
   }
 }
+//Edit: Prints out the ajacent rooms in a hexagonal style.
