@@ -35,7 +35,7 @@ class Main {
       System.out.println(room.roomCount()+" rooms");  
       roomsToString();  
     }  else{
-      System.out.println("bBound or rBound is even!");
+      throw new ArithmeticException("rBound or bBound is even!");
     }
   }
 
