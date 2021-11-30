@@ -27,12 +27,17 @@ class Main {
   }
 
   public static void main(String[] args) {
-    for (int i = 0; i < rooms.length; i++){
-      rooms[i] = new room(i+1);
+    if(room.bBound % 2 == 1 && room.rBound % 2 == 1){
+      for (int i = 0; i < rooms.length; i++){
+        rooms[i] = new room(i+1);
+      }
+      rooms[3].roomData();
+      System.out.println(room.roomCount()+" rooms");  
+      roomsToString();  
+    }  else{
+      System.out.println("bBound or rBound is even!");
     }
-    rooms[2].roomData();
-    System.out.println(room.roomCount() + " rooms");  
-    roomsToString();  
   }
 
 }
+// Edit: Wont run if bounds are invalid
