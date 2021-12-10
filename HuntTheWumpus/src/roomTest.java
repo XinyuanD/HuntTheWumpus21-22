@@ -1,28 +1,29 @@
-import java.util.Random;
 class room {
-  public int val;
-  public int above;
-  public int bellow;
-  public int leftTop;
-  public int leftBot;
-  public int rightTop;
-  public int rightBot;
-  public int[] ajacentRooms = {above, bellow, leftTop, rightTop, leftBot, rightBot};
-  public int collum;
-  public int row;
-  public boolean even;
-  public static int tBound=0;
-  public static int bBound=9;
-  public static int lBound=0;
-  public static int rBound=5;
+    private game game;
+    private int val;
+    private int above;
+    private int bellow;
+    private int leftTop;
+    private int leftBot;
+    private int rightTop;
+    private int rightBot;
+    private int[] ajacentRooms = {above, bellow, leftTop, rightTop, leftBot, rightBot};
+    private int collum;
+    private int row;
+    private int tBound;
+    private int bBound;
+    private int lBound;
+    private int rBound;
 
   public room[] door = new room[3];
 
-  public room(int val){
+  public room(int val, game game){
+
+    bBound = game.getBBound();
+    rBound = game.getRBound();
+
+      this.game = game;
     this.val = val;
-    if (val % 2 == 0){
-      even = true;
-    }
     collum = (val % (rBound+1)) - 1;
 
     if(collum == -1){
@@ -31,7 +32,7 @@ class room {
 
     int rowDuo = (val-1)/(rBound+1);
     row = rowDuo*2;
-    if(even){
+    if(val % 2 == 0){
       row++;
     }
 
@@ -130,6 +131,26 @@ class room {
     rightBot = cRToVal(x, y);
   }
 
+  public int getVal(){
+      return val;
+  }
+
+  public int[] getAjacent(){
+      return ajacentRooms;
+  }
+
+  public int getCollum(){
+      return collum;
+  }
+
+  public int getRow(){
+    return row;
+  }
+
+  public game getGame(){
+      return game;
+  }
+
   public void roomData(){
     System.out.println("Room Number: " + val);
     System.out.println("Above: " + above);
@@ -143,10 +164,6 @@ class room {
     System.out.println("  " + val);
     System.out.println(leftBot + "   " + rightBot);
     System.out.println("  " + bellow);
-  }
 
-  public static int roomCount(){
-    return ((bBound/2)*(rBound+1)) + 1 + rBound;
   }
 }
-//Edit: Prints out the ajacent rooms in a hexagonal style.
