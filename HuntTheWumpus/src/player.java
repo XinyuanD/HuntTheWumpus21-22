@@ -1,51 +1,54 @@
-//put some player pseudocode in here
-
-//what methods we want, etc.
 import java.util.Random;
-public class player { 
+public class player {
+    //put some player pseudocode in here
   
   //DATA
+ public int numArrows = 3;
+ public game game;
  public room currentRoom;
- public static int numArrows = 3;
  
  //int score 
   //we can either put score as a property of this object or make it something else entirely
   
   
   //created object
-  public player(room room) {
+  public player(room room, game game) {
     this.currentRoom = room;
+    this.game = game;
+    currentRoom = game.getCave()[0];
   }
   //if no spawning room provided, spawns in a random room
-  public player() {
+  public player(game game) {
     Random rand = new Random();
     //picks random room
-    this.currentRoom = Main.rooms[rand.nextInt(Main.rooms.length-1)];
+    this.currentRoom = game.getCave()[rand.nextInt(game.getCave().length-1)];
+    this.game = game;
+    currentRoom = game.getCave()[0];
   }
   
   //moves player from room to room
   public void moveAbove(){
-    currentRoom = Main.rooms[currentRoom.above-1];
+    currentRoom = game.getCave()[currentRoom.getAjacent()[0]-1];
   }
 
   public void moveBellow(){
-    currentRoom = Main.rooms[currentRoom.bellow-1];
+    currentRoom = game.getCave()[currentRoom.getAjacent()[1]-1];
   }
 
   public void moveTopLeft(){
-    currentRoom = Main.rooms[currentRoom.leftTop-1];
+    currentRoom = game.getCave()[currentRoom.getAjacent()[2]-1];
   }
 
   public void moveTopRight(){
-    currentRoom = Main.rooms[currentRoom.rightTop-1];
+    currentRoom = game.getCave()[currentRoom.getAjacent()[3]-1];
   }
 
   public void moveBottomLeft(){
-    currentRoom = Main.rooms[currentRoom.leftBot-1];
+    currentRoom = game.getCave()[currentRoom.getAjacent()[4]-1];
   }
 
   public void moveBottomRight(){
-    currentRoom = Main.rooms[currentRoom.rightBot-1];
+    currentRoom = game.getCave()[currentRoom.getAjacent()[5]-1];
   }
 
   //classice getters. we can put the setters later. this will be important for updating the player's stage
@@ -59,10 +62,11 @@ public class player {
   }
 
   public void printCurrentRoom(){
-    System.out.println("The player is now in room: " + currentRoom.val);
+    System.out.println("The player is now in room: " + currentRoom.getVal());
   }
   
   //next will be a spawn method to put in a random room
   
   
 }
+
