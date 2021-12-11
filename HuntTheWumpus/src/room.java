@@ -8,6 +8,7 @@ class room {
     private int rightTop;
     private int rightBot;
     private int[] ajacentRooms = {above, bellow, leftTop, rightTop, leftBot, rightBot};
+    private int[] connectedRooms;
     private int collum;
     private int row;
     private int tBound;
@@ -42,6 +43,9 @@ class room {
     topRight();
     botLeft();
     botRight();
+    int[] aRooms ={above, bellow, leftTop, rightTop, leftBot, rightBot};
+    this.ajacentRooms = aRooms;
+    this.connectedRooms = game.getTunnels()[val-1];
   }
 
 
@@ -151,6 +155,10 @@ class room {
       return game;
   }
 
+  public int[] getConnected(){
+    return connectedRooms;
+  }
+
   public void roomData(){
     System.out.println("Room Number: " + val);
     System.out.println("Above: " + above);
@@ -166,4 +174,5 @@ class room {
     System.out.println("  " + bellow);
 
   }
+
 }
