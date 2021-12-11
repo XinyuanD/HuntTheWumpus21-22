@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.stream.IntStream;
 public class player {
     //put some player pseudocode in here
   
@@ -23,32 +24,55 @@ public class player {
     //picks random room
     this.currentRoom = game.getCave()[rand.nextInt(game.getCave().length-1)];
     this.game = game;
-    currentRoom = game.getCave()[0];
   }
   
   //moves player from room to room
   public void moveAbove(){
-    currentRoom = game.getCave()[currentRoom.getAjacent()[0]-1];
+    if (IntStream.of(currentRoom.getConnected()).anyMatch(n -> n == currentRoom.getAjacent()[0])){
+      currentRoom = game.getCave()[currentRoom.getAjacent()[0]-1];
+    } else {
+      System.out.println("You can't go there!");
+    }
   }
 
   public void moveBellow(){
-    currentRoom = game.getCave()[currentRoom.getAjacent()[1]-1];
+    if (IntStream.of(currentRoom.getConnected()).anyMatch(n -> n == currentRoom.getAjacent()[1])){
+      currentRoom = game.getCave()[currentRoom.getAjacent()[1]-1];
+    } else {
+      System.out.println("You can't go there!");
+    }
   }
 
   public void moveTopLeft(){
-    currentRoom = game.getCave()[currentRoom.getAjacent()[2]-1];
+    if (IntStream.of(currentRoom.getConnected()).anyMatch(n -> n == currentRoom.getAjacent()[2])){
+      currentRoom = game.getCave()[currentRoom.getAjacent()[2]-1];
+    } else {
+      System.out.println("You can't go there!");
+    }
   }
 
   public void moveTopRight(){
-    currentRoom = game.getCave()[currentRoom.getAjacent()[3]-1];
+    if (IntStream.of(currentRoom.getConnected()).anyMatch(n -> n == currentRoom.getAjacent()[3])){
+      currentRoom = game.getCave()[currentRoom.getAjacent()[3]-1];
+    } else {
+      System.out.println("You can't go there!");
+    }
   }
 
   public void moveBottomLeft(){
-    currentRoom = game.getCave()[currentRoom.getAjacent()[4]-1];
+    if (IntStream.of(currentRoom.getConnected()).anyMatch(n -> n == currentRoom.getAjacent()[4])){
+      currentRoom = game.getCave()[currentRoom.getAjacent()[4]-1];
+    } else {
+      System.out.println("You can't go there!");
+    }
   }
 
   public void moveBottomRight(){
-    currentRoom = game.getCave()[currentRoom.getAjacent()[5]-1];
+    if (IntStream.of(currentRoom.getConnected()).anyMatch(n -> n == currentRoom.getAjacent()[5])){
+      currentRoom = game.getCave()[currentRoom.getAjacent()[5]-1];
+    } else {
+      System.out.println("You can't go there!");
+    }
   }
 
   //classice getters. we can put the setters later. this will be important for updating the player's stage
