@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 
+namespace Wumpus{
 public class bats {
 
     // two rooms
@@ -54,4 +55,5 @@ public class bats {
     public static ArrayList getBatRooms(){
         return batRooms;
     }
+}
 }
