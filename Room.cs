@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+namespace Wumpus{
 public class room {
     private game game;
     private int val;
@@ -11,21 +14,21 @@ public class room {
     private int[] connectedRooms;
     private int collum;
     private int row;
-    private int tBound;
+    private int tBound = 0;
     private int bBound;
-    private int lBound;
+    private int lBound = 0;
     private int rBound;
 
   public room[] door = new room[3];
 
   public room(int val, game game){
 
-    bBound = game.getBBound();
-    rBound = game.getRBound();
+    this.bBound = game.getBBound();
+    this.rBound = game.getRBound();
 
     this.game = game;
     this.val = val;
-    collum = (val % (rBound+1)) - 1;
+    this.collum = (val % (rBound+1)) - 1;
 
     if(collum == -1){
       collum = rBound;
@@ -175,4 +178,5 @@ public class room {
 
   }
 
+}
 }
