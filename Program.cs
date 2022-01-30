@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace WumpusProject 
+namespace Wumpus
 {
     internal class Program
     {
@@ -8,7 +8,6 @@ namespace WumpusProject
         {
             game newGame = new game();
             newGame.caveToString();
-            Console.WriteLine(newGame.getRoomCount());
         }
     }
 }
