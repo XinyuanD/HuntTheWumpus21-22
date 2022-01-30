@@ -1,10 +1,17 @@
+using System;
+using System.Collections;
+namespace Wumpus{
 public class player {
     //put some player pseudocode in here
   
   //DATA
- public int numArrows = 3;
- public game game;
- public room currentRoom;
+ private int numArrows = 3;
+ private game game;
+ private room currentRoom;
+
+ private int coins;
+
+ private int fuel;
  
  //int score 
   //we can either put score as a property of this object or make it something else entirely
@@ -101,6 +108,26 @@ public class player {
     return numArrows;
   }
 
+  public void setNumArrows(int num){
+    numArrows = num;
+  }
+
+  public int getNumCoins(){
+    return coins;
+  }
+
+  public void setCoins(int num){
+    coins = num;
+  }
+
+public int getNumFuel(){
+    return fuel;
+  }
+
+  public void setFuel(int num){
+    fuel = num;
+  }
+
   public void printCurrentRoom(){
     Console.WriteLine("The player is now in room: " + currentRoom.getVal());
   }
@@ -108,4 +135,5 @@ public class player {
   //next will be a spawn method to put in a random room
   
   
+}
 }
