@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+namespace Wumpus{
 public class game {
     private int rBound;
     private int bBound;
@@ -65,12 +68,13 @@ public class game {
     }
 
     public game(){
+      this.rBound = 5;
+      this.bBound = 9;
       this.cave = new room[30];
       for (int i = 0; i < cave.Length; i++){
           cave[i] = new room(i+1, this);
       }
-      this.rBound = 5;
-      this.bBound = 9;
+      
       this.player = new player(this);
       wumpus wumpus = new wumpus(this);
     }
@@ -107,27 +111,28 @@ public class game {
     }
 
     public void caveToString(){
-        String[,] roomDisplay = new String[rBound+1, bBound+1];
+        string[,] roomDisplay = new string[bBound+1, rBound+1];
         for(int i = 0; i<rBound+1; i++){
           for(int j = 0; j<bBound+1; j++){
-            roomDisplay[i, j] = " ";
+            roomDisplay[j, i] = " ";
           }
         }
         for(int i = 0; i < cave.Length; i++){
           if(cave[i].getVal() < 10){
-            roomDisplay[cave[i].getCollum(), cave[i].getRow()] = cave[i].getVal() + " ";
+            roomDisplay[cave[i].getRow(), cave[i].getCollum()] = cave[i].getVal() + " ";
           } else {
-            roomDisplay[cave[i].getCollum(), cave[i].getRow()] = cave[i].getVal() + "";
+            roomDisplay[cave[i].getRow(), cave[i].getCollum()] = cave[i].getVal() + "";
           }
         }
     
-        for(int i = 0; i<bBound+1l; i++){
+        for(int i = 0; i<bBound+1; i++){
           Console.WriteLine();
           for(int j = 0; j<rBound+1; j++){
-            Console.WriteLine(roomDisplay[j, i]);
+            Console.Write(roomDisplay[i, j]);
           }
         }
         Console.WriteLine();
       }
 
+}
 }
