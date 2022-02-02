@@ -6,31 +6,31 @@ namespace Wumpus
     {
         private ArrayList secrets;
         private player player;
-
-        public Shop(player player) {
-            this.player = player;
+        private game game;
+        public Shop(player game) {
+            this.game = game;
             secrets = new ArrayList();
         }
 
         public void buyFuel(int fuel, player player) {
             int numCoins = fuel*10;
-            if (numCoins > player.getNumCoins()){
+            if (numCoins > game.getPlayer().getNumCoins()){
                 Console.WriteLine("You do not have enough coins");
             }
             else {
-                player.setNumCoins(player.getNumCoins()-numCoins);
-                player.setNumFuel(player.getNumFuel() + fuel);
+                player.setNumCoins(game.getPlayer().getNumCoins()-numCoins);
+                player.setNumFuel(game.getPlayer().getNumFuel() + fuel);
             }
         }
 
         public void buySecret(int numSecrets, player player, Trivia trivia) {
             int numCoins = numSecrets*20;
-            int availableCoins = player.getNumCoins();
+            int availableCoins =  game.getPlayer().getNumCoins();
             if (numCoins > availableCoins){
                 Console.WriteLine("You do not have enough coins");
             }
             else {
-                player.setNumCoins(availableCoins - numCoins);
+                 game.getPlayer().setNumCoins(availableCoins - numCoins);
                 secrets.Add(Trivia.getNumSecret());
             }
         }
@@ -51,8 +51,8 @@ namespace Wumpus
                 Console.WriteLine("You do not have enough coins");
             }
             else {
-                player.setNumCoins(player.getNumCoins()-numCoins);
-                player.setNumArrows(player.getNumArrows() + numArrows);
+                game.getPlayer().setNumCoins(player.getNumCoins()-numCoins);
+                game.getPlayer().setNumArrows(player.getNumArrows() + numArrows);
             }
         }
 
