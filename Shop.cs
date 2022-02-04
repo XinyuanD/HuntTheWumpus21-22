@@ -5,9 +5,8 @@ namespace Wumpus
     public class shop
     {
         private ArrayList secrets;
-        private player player;
         private game game;
-        public Shop(player game) {
+        public shop(game game) {
             this.game = game;
             secrets = new ArrayList();
         }
@@ -18,20 +17,20 @@ namespace Wumpus
                 Console.WriteLine("You do not have enough coins");
             }
             else {
-                player.setNumCoins(game.getPlayer().getNumCoins()-numCoins);
-                player.setNumFuel(game.getPlayer().getNumFuel() + fuel);
+                game.getPlayer().setCoins(game.getPlayer().getNumCoins()-numCoins);
+                game.getPlayer().setFuel(game.getPlayer().getNumFuel() + fuel);
             }
         }
 
-        public void buySecret(int numSecrets, player player, Trivia trivia) {
+        public void buySecret(int numSecrets, player player, trivia trivia) {
             int numCoins = numSecrets*20;
             int availableCoins =  game.getPlayer().getNumCoins();
-            if (numCoins > availableCoins){
+            if (numCoins < availableCoins){
                 Console.WriteLine("You do not have enough coins");
             }
             else {
-                 game.getPlayer().setNumCoins(availableCoins - numCoins);
-                secrets.Add(Trivia.getNumSecret());
+                 game.getPlayer().setCoins(availableCoins - numCoins);
+                secrets.Add(game.getTrivia().getSecret());
             }
         }
 
@@ -47,12 +46,12 @@ namespace Wumpus
 
         public void buyArrows(int numArrows, player player) {
             int numCoins = numArrows*5;
-            if (numCoins > player.getCoins()){
+            if (numCoins > game.getPlayer().getNumCoins()){
                 Console.WriteLine("You do not have enough coins");
             }
             else {
-                game.getPlayer().setNumCoins(player.getNumCoins()-numCoins);
-                game.getPlayer().setNumArrows(player.getNumArrows() + numArrows);
+                game.getPlayer().setCoins(player.getNumCoins()-numCoins);
+                game.getPlayer().setArrows(player.getNumArrows() + numArrows);
             }
         }
 
