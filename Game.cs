@@ -10,6 +10,10 @@ public class game {
     private room[] cave;
     private player player;
 
+    private trivia trivia;
+
+    private wumpus wumpus;
+
 
     private int[][] tunnels1 = {
       
@@ -76,7 +80,8 @@ public class game {
       }
       
       this.player = new player(this);
-      wumpus wumpus = new wumpus(this);
+      this.wumpus = new wumpus(this);
+      this.trivia = new trivia(this);
     }
 
     public void createHazards(){
@@ -108,6 +113,10 @@ public class game {
         return tunnels1;
       }
       return tunnels1;
+    }
+
+    public trivia getTrivia(){
+      return trivia;
     }
 
     public void caveToString(){
