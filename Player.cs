@@ -108,7 +108,7 @@ public class player {
     return numArrows;
   }
 
-  public void setNumArrows(int num){
+  public void setArrows(int num){
     numArrows = num;
   }
 
